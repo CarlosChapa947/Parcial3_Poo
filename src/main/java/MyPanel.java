@@ -58,6 +58,7 @@ public class MyPanel extends JPanel {
             //Voy a admitir que no se si sea una ilegalidad, pero la idea aqui es actualizar el label una vez que haya
             //Terminado el trabajo, por lo que asumo que deberia ser correcto el uso
             //Sin embargo todavia me da tentacion actualizar un complemento fuera del EDT :(((
+            //Update repaint si es threadSafe, todavia no estoy del todo claro con setIcon
             @Override
             protected void done() {
                 BufferedImage buff = null;
