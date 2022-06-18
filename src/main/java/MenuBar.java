@@ -1,17 +1,13 @@
+/*Clase encargada del modelado del menu, asi como sus respectivas opciones*/
+
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.awt.event.ActionListener;
 
 public class MenuBar extends JMenuBar {
-    JMenu archivo, efectos;
-    JMenuItem cargar, remove;
-    JMenuItem negativo, blur, sharpen, reset;
+    private JMenu archivo, efectos;
+    private JMenuItem cargar, remove;
+    private JMenuItem negativo, blur, sharpen, reset;
 
-    public MenuBar(JFrame frame){
+    public MenuBar(){
         this.archivo = new JMenu("Archivo");
         this.efectos = new JMenu("Efectos");
         this.cargar = new JMenuItem("Cargar");

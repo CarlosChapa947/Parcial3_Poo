@@ -1,3 +1,4 @@
+/*Clase encargada de modelar el panel contenedor del Label que contiene la imagen*/
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -26,6 +27,9 @@ public class MyPanel extends JPanel {
         return myLabel;
     }
 
+    /*Metodo Utilizado para aplicar un filtro negativo a la imagen establecida en el label mediante una de las
+      Background threads, lejos del EDT para no bloquearlo
+     */
     public void applyNegativeFilter(){
         SwingWorker<BufferedImage, Object> worker;
         worker = new SwingWorker<BufferedImage, Object>() {
@@ -51,6 +55,9 @@ public class MyPanel extends JPanel {
                 return buff;
             }
 
+            //Voy a admitir que no se si sea una ilegalidad, pero la idea aqui es actualizar el label una vez que haya
+            //Terminado el trabajo, por lo que asumo que deberia ser correcto el uso
+            //Sin embargo todavia me da tentacion actualizar un complemento fuera del EDT :(((
             @Override
             protected void done() {
                 BufferedImage buff = null;
@@ -68,12 +75,13 @@ public class MyPanel extends JPanel {
         worker.execute();
     }
 
+    //Reset la img del Label
     public void resetImg(){
-        BufferedImage buff = myLabel.getCopyImg();
-        myLabel.setIcon(new ImageIcon(buff));
+        myLabel.resetImg();
         myLabel.repaint();
     }
 
+    //Metodo para aplicar un filtro sharpen a la imagen mediante un worker thread
     public void applySharpenFilter(){
         SwingWorker<BufferedImage, Object> worker;
         worker = new SwingWorker<BufferedImage, Object>() {
@@ -104,6 +112,7 @@ public class MyPanel extends JPanel {
         worker.execute();
     }
 
+    //Metodo para aplicar un filtro Blur a la imagen mediante un worker thread
     public void applyBlurFilter(){
         SwingWorker<BufferedImage, Object> worker;
         worker = new SwingWorker<BufferedImage, Object>() {

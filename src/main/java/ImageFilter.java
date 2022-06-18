@@ -1,8 +1,10 @@
+/*Filtro para mostrar solo archivos con la terminacion relacionadas a imagenes o carpetas */
+
 import javax.swing.filechooser.FileFilter;
 import java.io.File;
 
 public class ImageFilter extends FileFilter {
-    public String whiteList[] = {"jpeg", "jpg", "png"};
+    private final String whiteList[] = {"jpeg", "jpg", "png"};
     @Override
     public boolean accept(File f) {
         if (f.isDirectory()) {

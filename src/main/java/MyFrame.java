@@ -1,3 +1,4 @@
+/*Clase encargada de modelar la ventana principal*/
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -6,10 +7,10 @@ import java.io.File;
 import java.io.IOException;
 
 public class MyFrame extends JFrame {
-
+    //Constructor de la ventana
     public MyFrame(){
         MyPanel myPanel = new MyPanel(new FlowLayout());
-        MenuBar menuBar = new MenuBar(this);
+        MenuBar menuBar = new MenuBar();
 
         menuBar.getCargar().addActionListener(e -> {
             JFileChooser fileChooser = new JFileChooser();
@@ -35,7 +36,6 @@ public class MyFrame extends JFrame {
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
-            }else{
             }
         });
 
